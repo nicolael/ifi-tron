@@ -1,0 +1,41 @@
+#ifndef inf1060_score_asgeirom
+#define inf1060_score_asgeirom
+#include <stddef.h>
+#include <stdint.h>
+
+struct score_board; /* Denne må du definere selv et sted... */
+
+/** 
+
+board_init returnerer et nytt high-score board
+
+**/
+
+struct score_board* board_init(size_t size, size_t name_len); 
+
+
+/** 
+  board_add_score - returverdier:
+  -1 = error
+  0  = ikke god nok score for å få plass i listen
+  X  = plassering for nye score i listen
+ **/
+int board_add_score(struct score_board *board, uint32_t score, const char *name);  
+
+/** 
+  board_get_pos - returverdier:
+  -1 = error 
+   0 = funnet 
+**/
+
+int board_get_pos(struct score_board *board, size_t pos, uint32_t *score, char *name_dest, size_t name_size);
+
+/** 
+  board_destroy - returnerer NULL hvis alt er i orden
+**/
+
+struct score_board* board_destroy(struct score_board *board);
+
+/** Potensielt flere funksjoner ... **/
+
+#endif
